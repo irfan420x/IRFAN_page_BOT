@@ -32,7 +32,7 @@ async function handleMessage(message, senderId, recipientId, timestamp) {
     const attachments = message.attachments || [];
     const quickReply = message.quick_reply;
     
-    logger.info(`📩 Message from ${senderId}: ${text.substring(0, 100)}`);
+    logger.info(`ðŸ“© Message from ${senderId}: ${text.substring(0, 100)}`);
     
     // Handle quick replies
     if (quickReply) {
@@ -78,7 +78,7 @@ async function handlePostback(postback, senderId, recipientId, timestamp) {
       payload = postback.payload;
     }
     
-    logger.info(`🔘 Postback from ${senderId}:`, payload);
+    logger.info(`ðŸ”˜ Postback from ${senderId}:`, payload);
     
     // Load postback plugins
     const postbackPlugins = require('../utils/pluginLoader').getPostbackPlugins();
@@ -113,7 +113,7 @@ async function handleComment(commentData, pageId) {
   try {
     const { commentId, postId, senderId, senderName, message, createdAt } = commentData;
     
-    logger.info(`💬 Comment from ${senderName}: ${message}`);
+    logger.info(`ðŸ’¬ Comment from ${senderName}: ${message}`);
     
     // Load comment plugins
     const commentPlugins = require('../utils/pluginLoader').getCommentPlugins();
@@ -151,7 +151,7 @@ async function handleAttachments(attachments, senderId) {
     const type = attachment.type;
     const url = attachment.payload?.url;
     
-    logger.info(`📎 ${type} attachment from ${senderId}: ${url}`);
+    logger.info(`ðŸ“Ž ${type} attachment from ${senderId}: ${url}`);
     
     switch (type) {
       case 'image':
