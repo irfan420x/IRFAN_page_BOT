@@ -22,7 +22,11 @@ const fs = require('fs');
 const config = require('./config.json');
 const fbApi = require('./utils/fbApi');
 const { loadPlugins, reloadPlugins, getPluginStats } = require('./utils/pluginLoader');
-const { handleMessage, handlePostback, handleComment } = require('./handlers/index');
+
+// NOTE: The handlers directory is named "handlres" (misspelled) in this project.
+// Import from the correct path to avoid "Cannot find module" errors that cause
+// runtime crashes in serverless deployments.
+const { handleMessage, handlePostback, handleComment } = require('./handlres/index');
 const { MessageTracker, PostbackTracker } = require('./utils/trackers');
 const { setupHealthChecks, getSystemMetrics } = require('./utils/healthMonitor');
 
